@@ -5,8 +5,10 @@ namespace NeuronLogisticsServer.Application.Abstractions.Services
 {
     public interface IAuthService
     {
-        Task<GoogleLoginResponseDto> GoogleLoginAsync(GoogleLoginRequestDto model, int accessTokenLifeTime);
+        Task<GoogleLoginResponseDto> GoogleLoginAsync(GoogleLoginRequestDto model);
 
-        Task<LoginResponseDto> LoginAsync(LoginRequestDto model, int accessTokenLifeTime);
+        Task<LoginResponseDto> LoginAsync(LoginRequestDto model);
+
+        Task<LoginResponseDto> RefreshTokenLoginAsync(string refreshToken);
     }
 }

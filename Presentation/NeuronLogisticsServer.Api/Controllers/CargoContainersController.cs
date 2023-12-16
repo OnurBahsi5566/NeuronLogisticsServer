@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NeuronLogisticsServer.Application.Features.Commands.DefinitionCommands.CargoContainerCommands.CreateCommand;
 using NeuronLogisticsServer.Application.Features.Commands.DefinitionCommands.CargoContainerCommands.RemoveCommand;
@@ -14,7 +15,7 @@ namespace NeuronLogisticsServer.Api.Controllers
 {
     [Route("api/cargoContainers")]
     [ApiController]
-    //[Authorize(AuthenticationSchemes = "Admin")]
+    [Authorize(AuthenticationSchemes = "Admin")]
     public class CargoContainersController : ControllerBase
     {
         readonly IMediator _mediator;

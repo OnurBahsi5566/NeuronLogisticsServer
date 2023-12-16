@@ -20,7 +20,7 @@ namespace NeuronLogisticsServer.Application.Features.Commands.IdentityCommands.A
             {
                 UserNameOrEmail = request.UserNameOrEmail,
                 Password = request.Password,
-            }, 15);
+            });
 
             return new()
             {

@@ -25,7 +25,7 @@ namespace NeuronLogisticsServer.Application.Features.Commands.IdentityCommands.A
                 Email = request.Email,
                 PhotoUrl = request.PhotoUrl,
                 Provider = request.Provider
-            }, 15);
+            });
 
             return new()
             {

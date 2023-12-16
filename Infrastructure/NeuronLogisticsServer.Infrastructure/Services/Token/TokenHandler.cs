@@ -1,7 +1,10 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using NeuronLogisticsServer.Application.Abstractions.Token;
+using NeuronLogisticsServer.Domain.Entities.Identity;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace NeuronLogisticsServer.Infrastructure.Services.Token
@@ -15,7 +18,7 @@ namespace NeuronLogisticsServer.Infrastructure.Services.Token
             _configuration = configuration;
         }
 
-        public Application.DTOs.Token CreateAccessToken(int second)
+        public Application.DTOs.Token CreateAccessToken(AppUser user)
         {
             Application.DTOs.Token token = new();
 
@@ -26,19 +29,30 @@ namespace NeuronLogisticsServer.Infrastructure.Services.Token
             SigningCredentials signingCredentials = new(securityKey, SecurityAlgorithms.HmacSha256);
 
             // oluşturulacak token ayarları
-            token.Expiration = DateTime.UtcNow.AddSeconds(second); //geçerliliği gönderilen dk kadar sürsün
+            token.Expiration = DateTime.UtcNow.AddSeconds(Convert.ToInt32(_configuration["TokenLifeTime:AccessTokenLifeTime"])); //geçerliliği gönderilen dk kadar sürsün
             JwtSecurityToken securityToken = new(
                 audience: _configuration["Token:Audience"],
                 issuer: _configuration["Token:Issuer"],
                 expires: token.Expiration,
                 notBefore: DateTime.UtcNow, //üretildiği anda geçeriliği devreye girsin.
-                signingCredentials: signingCredentials
+                signingCredentials: signingCredentials,
+                claims: new List<Claim> { new(ClaimTypes.Name, user.UserName)}
                 );
 
             JwtSecurityTokenHandler securityTokenHandler = new();
             token.AccessToken = securityTokenHandler.WriteToken( securityToken );
+            token.RefreshToken = CreateRefreshToken();
 
             return token;
+        }
+
+        public string CreateRefreshToken()
+        {
+            byte[] number = new byte[32];
+            using RandomNumberGenerator random = RandomNumberGenerator.Create();
+            random.GetBytes( number );
+
+            return Convert.ToBase64String( number );
         }
     }
 }

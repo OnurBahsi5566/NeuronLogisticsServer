@@ -1,5 +1,6 @@
 ﻿using Google.Apis.Auth;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using NeuronLogisticsServer.Application.Abstractions.Services;
 using NeuronLogisticsServer.Application.Abstractions.Token;
@@ -18,15 +19,17 @@ namespace NeuronLogisticsServer.Persistence.Services
         readonly ITokenHandler _tokenHandler;
         readonly IConfiguration _configuration;
         readonly SignInManager<AppUser> _signInManager;
+        readonly IAppUserService _appUserService;
 
-        public AuthService(UserManager<AppUser> userManager, ITokenHandler tokenHandler, IConfiguration configuration, SignInManager<AppUser> signInManager)
+        public AuthService(UserManager<AppUser> userManager, ITokenHandler tokenHandler, IConfiguration configuration, SignInManager<AppUser> signInManager, IAppUserService appUserService)
         {
             _userManager = userManager;
             _tokenHandler = tokenHandler;
             _configuration = configuration;
             _signInManager = signInManager;
+            _appUserService = appUserService;
         }
-        public async Task<GoogleLoginResponseDto> GoogleLoginAsync(GoogleLoginRequestDto model, int accessTokenLifeTime)
+        public async Task<GoogleLoginResponseDto> GoogleLoginAsync(GoogleLoginRequestDto model)
         {
             var settings = new GoogleJsonWebSignature.ValidationSettings()
             {
@@ -63,7 +66,8 @@ namespace NeuronLogisticsServer.Persistence.Services
             else
                 throw new AuthenticationErrorException("Invalid external authentication.");
 
-            Token token = _tokenHandler.CreateAccessToken(accessTokenLifeTime); //saniye
+            Token token = _tokenHandler.CreateAccessToken(user);
+            await _appUserService.UpdateRefreshTokenAsync(token.RefreshToken, user, token.Expiration);
 
             return new()
             {
@@ -71,7 +75,7 @@ namespace NeuronLogisticsServer.Persistence.Services
             };
         }
 
-        public async Task<LoginResponseDto> LoginAsync(LoginRequestDto model, int accessTokenLifeTime)
+        public async Task<LoginResponseDto> LoginAsync(LoginRequestDto model)
         {
             AppUser? user = await _userManager.FindByNameAsync(model.UserNameOrEmail);
             if (user == null)
@@ -83,7 +87,8 @@ namespace NeuronLogisticsServer.Persistence.Services
             SignInResult result = await _signInManager.CheckPasswordSignInAsync(user, model.Password, false);
             if (result.Succeeded) //Authentication başarılı
             {
-                Token token = _tokenHandler.CreateAccessToken(accessTokenLifeTime); 
+                Token token = _tokenHandler.CreateAccessToken(user);
+                await _appUserService.UpdateRefreshTokenAsync(token.RefreshToken, user, token.Expiration);
                 return new LoginResponseDto()
                 {
                     Token = token,
@@ -91,6 +96,22 @@ namespace NeuronLogisticsServer.Persistence.Services
             }
 
             throw new AuthenticationErrorException();
+        }
+
+        public async Task<LoginResponseDto> RefreshTokenLoginAsync(string refreshToken)
+        {
+            AppUser? user = await _userManager.Users.FirstOrDefaultAsync(u => u.RefreshToken == refreshToken);
+            if (user != null && user?.RefreshTokenEndDate > DateTime.UtcNow)
+            {
+                Token token = _tokenHandler.CreateAccessToken(user);
+                await _appUserService.UpdateRefreshTokenAsync(token.RefreshToken, user, token.Expiration);
+                return new()
+                {
+                    Token = token
+                };
+            }
+            else
+                throw new NotFoundUserException();
         }
     }
 }

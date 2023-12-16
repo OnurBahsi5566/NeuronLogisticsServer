@@ -1,0 +1,114 @@
+2023-12-16 19:57:44.614 +03:00 [INF] User profile is available. Using 'C:\Users\ONUR\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-12-16 19:57:44.937 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-12-16 19:57:44.938 +03:00 [INF] Hosting environment: Development
+2023-12-16 19:57:44.939 +03:00 [INF] Content root path: C:\Users\ONUR\Desktop\neuron-river-company\NeuronLogisticsServer\Presentation\NeuronLogisticsServer.Api
+2023-12-16 19:57:44.983 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44358/swagger/index.html - -
+2023-12-16 19:57:45.430 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44358/swagger/index.html - - - 200 - text/html;charset=utf-8 448.8998ms
+2023-12-16 19:57:45.761 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44358/_framework/aspnetcore-browser-refresh.js - -
+2023-12-16 19:57:45.774 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44358/_framework/aspnetcore-browser-refresh.js - - - 200 12382 application/javascript;+charset=utf-8 6.7159ms
+2023-12-16 19:57:45.795 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44358/_vs/browserLink - -
+2023-12-16 19:57:45.818 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44358/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 23.2202ms
+2023-12-16 19:57:45.971 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44358/swagger/v1/swagger.json - -
+2023-12-16 19:57:46.199 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44358/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 228.1625ms
+2023-12-16 19:59:48.326 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44358/api/auth/login - -
+2023-12-16 19:59:48.364 +03:00 [INF] CORS policy execution successful.
+2023-12-16 19:59:48.369 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44358/api/auth/login - - - 204 - - 42.7923ms
+2023-12-16 19:59:48.488 +03:00 [INF] Request starting HTTP/2 POST https://localhost:44358/api/auth/login application/json 43
+2023-12-16 19:59:48.494 +03:00 [INF] CORS policy execution successful.
+2023-12-16 19:59:48.603 +03:00 [INF] Executing endpoint 'NeuronLogisticsServer.Api.Controllers.AuthController.Login (NeuronLogisticsServer.Api)'
+2023-12-16 19:59:48.658 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(NeuronLogisticsServer.Application.Features.Commands.IdentityCommands.AppUserCommands.LoginCommand.LoginCommandRequest) on controller NeuronLogisticsServer.Api.Controllers.AuthController (NeuronLogisticsServer.Api).
+2023-12-16 19:59:50.576 +03:00 [INF] Executed DbCommand (18ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."FirstName", a."FullName", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."RefreshToken", a."RefreshTokenEndDate", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2023-12-16 19:59:51.106 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."FirstName", a."FullName", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."RefreshToken", a."RefreshTokenEndDate", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2023-12-16 19:59:51.284 +03:00 [INF] Executed DbCommand (30ms) [Parameters=[@p19='?', @p0='?' (DbType = Int32), @p1='?', @p20='?', @p2='?', @p3='?' (DbType = Boolean), @p4='?', @p5='?', @p6='?', @p7='?' (DbType = Boolean), @p8='?' (DbType = DateTime), @p9='?', @p10='?', @p11='?', @p12='?', @p13='?' (DbType = Boolean), @p14='?', @p15='?' (DbType = DateTime), @p16='?', @p17='?' (DbType = Boolean), @p18='?'], CommandType='"Text"', CommandTimeout='30']
+UPDATE "AspNetUsers" SET "AccessFailedCount" = @p0, "ConcurrencyStamp" = @p1, "Email" = @p2, "EmailConfirmed" = @p3, "FirstName" = @p4, "FullName" = @p5, "LastName" = @p6, "LockoutEnabled" = @p7, "LockoutEnd" = @p8, "NormalizedEmail" = @p9, "NormalizedUserName" = @p10, "PasswordHash" = @p11, "PhoneNumber" = @p12, "PhoneNumberConfirmed" = @p13, "RefreshToken" = @p14, "RefreshTokenEndDate" = @p15, "SecurityStamp" = @p16, "TwoFactorEnabled" = @p17, "UserName" = @p18
+WHERE "Id" = @p19 AND "ConcurrencyStamp" = @p20;
+2023-12-16 19:59:51.319 +03:00 [INF] Executing OkObjectResult, writing value of type 'NeuronLogisticsServer.Application.Features.Commands.IdentityCommands.AppUserCommands.LoginCommand.LoginCommandResponse'.
+2023-12-16 19:59:51.337 +03:00 [INF] Executed action NeuronLogisticsServer.Api.Controllers.AuthController.Login (NeuronLogisticsServer.Api) in 2674.3386ms
+2023-12-16 19:59:51.338 +03:00 [INF] Executed endpoint 'NeuronLogisticsServer.Api.Controllers.AuthController.Login (NeuronLogisticsServer.Api)'
+2023-12-16 19:59:51.357 +03:00 [INF] Request finished HTTP/2 POST https://localhost:44358/api/auth/login application/json 43 - 200 - application/json;+charset=utf-8 2868.5630ms
+2023-12-16 19:59:51.499 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44358/api/cargoContainers?page=0&size=5 - -
+2023-12-16 19:59:51.512 +03:00 [INF] CORS policy execution successful.
+2023-12-16 19:59:51.587 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2023-12-16 19:59:51.593 +03:00 [INF] AuthenticationScheme: Admin was challenged.
+2023-12-16 19:59:51.597 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44358/api/cargoContainers?page=0&size=5 - - - 401 - - 97.8267ms
+2023-12-16 19:59:51.685 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44358/api/auth/refreshTokenLogin - -
+2023-12-16 19:59:51.686 +03:00 [INF] CORS policy execution successful.
+2023-12-16 19:59:51.687 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44358/api/auth/refreshTokenLogin - - - 204 - - 2.2472ms
+2023-12-16 19:59:51.693 +03:00 [INF] Request starting HTTP/2 POST https://localhost:44358/api/auth/refreshTokenLogin application/json 63
+2023-12-16 19:59:51.694 +03:00 [INF] CORS policy execution successful.
+2023-12-16 19:59:51.698 +03:00 [INF] Executing endpoint 'NeuronLogisticsServer.Api.Controllers.AuthController.RefreshTokenLogin (NeuronLogisticsServer.Api)'
+2023-12-16 19:59:51.710 +03:00 [INF] Route matched with {action = "RefreshTokenLogin", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RefreshTokenLogin(NeuronLogisticsServer.Application.Features.Commands.IdentityCommands.AppUserCommands.RefreshTokenLoginCommand.RefreshTokenLoginCommandRequest) on controller NeuronLogisticsServer.Api.Controllers.AuthController (NeuronLogisticsServer.Api).
+2023-12-16 19:59:51.892 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__refreshToken_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."FirstName", a."FullName", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."RefreshToken", a."RefreshTokenEndDate", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."RefreshToken" = @__refreshToken_0
+LIMIT 1
+2023-12-16 19:59:51.904 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."FirstName", a."FullName", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."RefreshToken", a."RefreshTokenEndDate", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2023-12-16 19:59:51.911 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@p19='?', @p0='?' (DbType = Int32), @p1='?', @p20='?', @p2='?', @p3='?' (DbType = Boolean), @p4='?', @p5='?', @p6='?', @p7='?' (DbType = Boolean), @p8='?' (DbType = DateTime), @p9='?', @p10='?', @p11='?', @p12='?', @p13='?' (DbType = Boolean), @p14='?', @p15='?' (DbType = DateTime), @p16='?', @p17='?' (DbType = Boolean), @p18='?'], CommandType='"Text"', CommandTimeout='30']
+UPDATE "AspNetUsers" SET "AccessFailedCount" = @p0, "ConcurrencyStamp" = @p1, "Email" = @p2, "EmailConfirmed" = @p3, "FirstName" = @p4, "FullName" = @p5, "LastName" = @p6, "LockoutEnabled" = @p7, "LockoutEnd" = @p8, "NormalizedEmail" = @p9, "NormalizedUserName" = @p10, "PasswordHash" = @p11, "PhoneNumber" = @p12, "PhoneNumberConfirmed" = @p13, "RefreshToken" = @p14, "RefreshTokenEndDate" = @p15, "SecurityStamp" = @p16, "TwoFactorEnabled" = @p17, "UserName" = @p18
+WHERE "Id" = @p19 AND "ConcurrencyStamp" = @p20;
+2023-12-16 19:59:51.916 +03:00 [INF] Executing OkObjectResult, writing value of type 'NeuronLogisticsServer.Application.Features.Commands.IdentityCommands.AppUserCommands.RefreshTokenLoginCommand.RefreshTokenLoginCommandResponse'.
+2023-12-16 19:59:51.918 +03:00 [INF] Executed action NeuronLogisticsServer.Api.Controllers.AuthController.RefreshTokenLogin (NeuronLogisticsServer.Api) in 208.0029ms
+2023-12-16 19:59:51.919 +03:00 [INF] Executed endpoint 'NeuronLogisticsServer.Api.Controllers.AuthController.RefreshTokenLogin (NeuronLogisticsServer.Api)'
+2023-12-16 19:59:51.921 +03:00 [INF] Request finished HTTP/2 POST https://localhost:44358/api/auth/refreshTokenLogin application/json 63 - 200 - application/json;+charset=utf-8 228.5833ms
+2023-12-16 20:01:31.291 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44358/api/auth/login - -
+2023-12-16 20:01:31.292 +03:00 [INF] CORS policy execution successful.
+2023-12-16 20:01:31.293 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44358/api/auth/login - - - 204 - - 1.3927ms
+2023-12-16 20:01:31.296 +03:00 [INF] Request starting HTTP/2 POST https://localhost:44358/api/auth/login application/json 43
+2023-12-16 20:01:31.296 +03:00 [INF] CORS policy execution successful.
+2023-12-16 20:01:31.297 +03:00 [INF] Executing endpoint 'NeuronLogisticsServer.Api.Controllers.AuthController.Login (NeuronLogisticsServer.Api)'
+2023-12-16 20:01:31.298 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(NeuronLogisticsServer.Application.Features.Commands.IdentityCommands.AppUserCommands.LoginCommand.LoginCommandRequest) on controller NeuronLogisticsServer.Api.Controllers.AuthController (NeuronLogisticsServer.Api).
+2023-12-16 20:01:31.376 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."FirstName", a."FullName", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."RefreshToken", a."RefreshTokenEndDate", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2023-12-16 20:01:31.492 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."FirstName", a."FullName", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."RefreshToken", a."RefreshTokenEndDate", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2023-12-16 20:01:31.503 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[@p19='?', @p0='?' (DbType = Int32), @p1='?', @p20='?', @p2='?', @p3='?' (DbType = Boolean), @p4='?', @p5='?', @p6='?', @p7='?' (DbType = Boolean), @p8='?' (DbType = DateTime), @p9='?', @p10='?', @p11='?', @p12='?', @p13='?' (DbType = Boolean), @p14='?', @p15='?' (DbType = DateTime), @p16='?', @p17='?' (DbType = Boolean), @p18='?'], CommandType='"Text"', CommandTimeout='30']
+UPDATE "AspNetUsers" SET "AccessFailedCount" = @p0, "ConcurrencyStamp" = @p1, "Email" = @p2, "EmailConfirmed" = @p3, "FirstName" = @p4, "FullName" = @p5, "LastName" = @p6, "LockoutEnabled" = @p7, "LockoutEnd" = @p8, "NormalizedEmail" = @p9, "NormalizedUserName" = @p10, "PasswordHash" = @p11, "PhoneNumber" = @p12, "PhoneNumberConfirmed" = @p13, "RefreshToken" = @p14, "RefreshTokenEndDate" = @p15, "SecurityStamp" = @p16, "TwoFactorEnabled" = @p17, "UserName" = @p18
+WHERE "Id" = @p19 AND "ConcurrencyStamp" = @p20;
+2023-12-16 20:01:31.504 +03:00 [INF] Executing OkObjectResult, writing value of type 'NeuronLogisticsServer.Application.Features.Commands.IdentityCommands.AppUserCommands.LoginCommand.LoginCommandResponse'.
+2023-12-16 20:01:31.505 +03:00 [INF] Executed action NeuronLogisticsServer.Api.Controllers.AuthController.Login (NeuronLogisticsServer.Api) in 207.3523ms
+2023-12-16 20:01:31.505 +03:00 [INF] Executed endpoint 'NeuronLogisticsServer.Api.Controllers.AuthController.Login (NeuronLogisticsServer.Api)'
+2023-12-16 20:01:31.507 +03:00 [INF] Request finished HTTP/2 POST https://localhost:44358/api/auth/login application/json 43 - 200 - application/json;+charset=utf-8 211.2631ms
+2023-12-16 20:12:01.691 +03:00 [INF] User profile is available. Using 'C:\Users\ONUR\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-12-16 20:12:02.126 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-12-16 20:12:02.136 +03:00 [INF] Hosting environment: Development
+2023-12-16 20:12:02.136 +03:00 [INF] Content root path: C:\Users\ONUR\Desktop\neuron-river-company\NeuronLogisticsServer\Presentation\NeuronLogisticsServer.Api
+2023-12-16 20:12:02.223 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44358/swagger/index.html - -
+2023-12-16 20:12:02.888 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44358/swagger/index.html - - - 200 - text/html;charset=utf-8 655.2602ms
+2023-12-16 20:12:02.927 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44358/_vs/browserLink - -
+2023-12-16 20:12:02.927 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44358/_framework/aspnetcore-browser-refresh.js - -
+2023-12-16 20:12:02.959 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44358/_framework/aspnetcore-browser-refresh.js - - - 200 12382 application/javascript;+charset=utf-8 31.6048ms
+2023-12-16 20:12:02.993 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44358/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 66.7712ms
+2023-12-16 20:12:03.107 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44358/swagger/v1/swagger.json - -
+2023-12-16 20:12:03.457 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44358/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 350.1099ms
+2023-12-16 20:34:57.939 +03:00 [INF] User profile is available. Using 'C:\Users\ONUR\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-12-16 20:34:58.484 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-12-16 20:34:58.486 +03:00 [INF] Hosting environment: Development
+2023-12-16 20:34:58.486 +03:00 [INF] Content root path: C:\Users\ONUR\Desktop\neuron-river-company\NeuronLogisticsServer\Presentation\NeuronLogisticsServer.Api
+2023-12-16 20:34:58.674 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44358/swagger/index.html - -
+2023-12-16 20:34:59.469 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44358/swagger/index.html - - - 200 - text/html;charset=utf-8 809.3772ms
+2023-12-16 20:34:59.487 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44358/_framework/aspnetcore-browser-refresh.js - -
+2023-12-16 20:34:59.497 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44358/_vs/browserLink - -
+2023-12-16 20:34:59.512 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44358/_framework/aspnetcore-browser-refresh.js - - - 200 12382 application/javascript;+charset=utf-8 24.7889ms
+2023-12-16 20:34:59.571 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44358/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 79.8417ms
+2023-12-16 20:34:59.740 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44358/swagger/v1/swagger.json - -
+2023-12-16 20:35:00.090 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44358/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 349.6530ms

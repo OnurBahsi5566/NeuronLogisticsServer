@@ -14,5 +14,9 @@ namespace NeuronLogisticsServer.Domain.Entities.Identity
         public string? LastName { get; set; }
 
         public string? FullName { get; set; }
+
+        public string? RefreshToken { get; set; }
+
+        public DateTime? RefreshTokenEndDate { get; set; }
     }
 }
