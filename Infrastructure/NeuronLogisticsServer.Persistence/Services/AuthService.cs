@@ -92,7 +92,7 @@ namespace NeuronLogisticsServer.Persistence.Services
                 return new LoginResponseDto()
                 {
                     Token = token,
-                };
+                };   
             }
 
             throw new AuthenticationErrorException();

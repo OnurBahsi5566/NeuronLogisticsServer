@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.IdentityModel.Tokens;
 using NeuronLogisticsServer.Api.Configurations.ColumnWriters;
+using NeuronLogisticsServer.Api.Extensions;
 using NeuronLogisticsServer.Application;
 using NeuronLogisticsServer.Application.Validators.Definitions;
 using NeuronLogisticsServer.Infrastructure;
@@ -113,6 +114,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.ConfigureExceptionHandler<Program>(app.Services.GetRequiredService<ILogger<Program>>());
 
 app.UseStaticFiles();
 
