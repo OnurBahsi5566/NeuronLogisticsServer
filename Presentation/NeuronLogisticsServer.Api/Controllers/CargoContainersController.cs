@@ -15,7 +15,7 @@ namespace NeuronLogisticsServer.Api.Controllers
 {
     [Route("api/cargoContainers")]
     [ApiController]
-    [Authorize(AuthenticationSchemes = "Admin")]
+    //[Authorize(AuthenticationSchemes = "Admin")]
     public class CargoContainersController : ControllerBase
     {
         readonly IMediator _mediator;

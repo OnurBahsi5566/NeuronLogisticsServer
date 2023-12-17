@@ -24,6 +24,7 @@
     <ProjectReference Include="..\..\Core\NeuronLogisticsServer.Application\NeuronLogisticsServer.Application.csproj" />
     <ProjectReference Include="..\..\Infrastructure\NeuronLogisticsServer.Infrastructure\NeuronLogisticsServer.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Infrastructure\NeuronLogisticsServer.Persistence\NeuronLogisticsServer.Persistence.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\NeuronLogisticsServer.SignalR\NeuronLogisticsServer.SignalR.csproj" />
   </ItemGroup>
 
   <ItemGroup>

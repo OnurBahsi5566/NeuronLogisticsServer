@@ -11,6 +11,7 @@ using NeuronLogisticsServer.Infrastructure.Filters;
 using NeuronLogisticsServer.Infrastructure.Services.Storages.Azure;
 using NeuronLogisticsServer.Infrastructure.Services.Storages.Local;
 using NeuronLogisticsServer.Persistence;
+using NeuronLogisticsServer.SignalR;
 using Serilog;
 using Serilog.Context;
 using Serilog.Core;
@@ -24,6 +25,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddPersistenceServices();
 builder.Services.AddInfrastructureServices();
 builder.Services.AddApplicationServices();
+builder.Services.AddSignalRService();
 
 
 //local dosya yapýsý kullanýyor ne istersek ona çevirebiliriz.
@@ -34,7 +36,7 @@ builder.Services.AddStroage<AzureStorage>();
 
 //api ye gelecek olan isteði kýsýtlama iþlemi.Sadece buradan istek alabilir demek.
 builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
-    policy.WithOrigins("http://localhost:4200", "https://localhost:4200").AllowAnyHeader().AllowAnyMethod()
+    policy.WithOrigins("http://localhost:4200", "https://localhost:4200").AllowAnyHeader().AllowAnyMethod().AllowCredentials()
 ));
 
 Logger log = new LoggerConfiguration()
@@ -137,5 +139,6 @@ app.Use(async (context, next) =>
 });
 
 app.MapControllers();
+app.MapHubs(); //SignalR katmanýnda Hub registrationdan alýnan middleware
 
 app.Run();
