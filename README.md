@@ -12,6 +12,8 @@ Authentication with JWT Token,
 
 Social-Login,
 
+Serilog-Seq,
+
 Global Exception,
 
 SignalR
